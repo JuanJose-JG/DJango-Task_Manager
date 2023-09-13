@@ -1,0 +1,63 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <main>
+        <section class="mx-auto mt-10 w-4/5 p-10 bg-gray-800 text-white shadow-xl self-center mb-10">
+
+            <h1 class="text-center text-3xl">Task detail</h1>
+
+            <div>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    {% if error %}
+                        <p class="text-red-500 mt-3">*{{ error }}</p>
+                    {% endif %}
+
+                    <div class="flex flex-col gap-5 mt-3">
+                        <input class="p-2 bg-gray-800 border border-orange-500 text-white" type="text" name="title" value="{{ task.title }}">
+
+                        <textarea class="p-2 bg-gray-800 border border-orange-500 text-white" name="description" rows="5">{{ task.description }}</textarea>
+
+                        <div class="flex gap-3">
+                            <p>Important</p>
+                            <input type="checkbox" name="important" id="switch-button" {% if task.important %} checked {% endif %}>
+                            <label for="switch-button" class="switch-button_label"></label>
+                        </div>
+
+                        <button class="bg-orange-500 py-3 transition duration-300 hover:bg-amber-500">Save</button>
+                    </div>
+                </form>
+                
+                <div class="flex mt-3 gap-2">
+
+                    <form action="{% url 'complete_task' task.id %}" method="POST">
+                        {% csrf_token %}
+                
+                        <button class="bg-green-700 p-3">Complete</button>
+                
+                    </form>
+                
+                    <form action="{% url 'delete_task' task.id %}" method="POST">
+                        {% csrf_token %}
+                
+                        <button class="bg-red-500 p-3">Delete</button>
+                
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}

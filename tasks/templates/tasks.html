@@ -1,0 +1,59 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="w-100 h-80 relative">
+        <img class="fixed -z-50 top-0 object-cover brightness-50 object-center w-full h-full" src="{% static 'img/background.jpg' %}">
+
+        <div class="absolute start-20 flex items-center text-white font-black text-5xl h-full">
+            {% if request.path == '/tareas/' %}
+                Tasks
+            {% else %}
+                Completed tasks
+            {% endif %}
+        </div>
+    </div>
+    <main class="bg-white p-20">
+
+        <div class="container mx-auto">
+            <a class="bg-orange-500 p-2 rounded-full transition duration-300 text-white hover:bg-amber-500" href="{% url 'create_task' %}">Add new task +</a>
+        </div>
+
+        <ul class="mt-5 container mx-auto">
+
+            {% for task in tasks %}
+            
+            <li class="border p-3">
+
+                    <a href="{% url 'task_detail' task.id %}">
+                        <div class="flex justify-between mb-3">
+                            {% if task.important %} <h1 class="text-2xl text-yellow-500 font-bold">{{ task.title }}</h1> {% else %} <h1 class="text-2xl font-bold">{{ task.title }}</h1> {% endif %}
+                            
+                            <p>{{ task.user.username }}</p>
+                        </div>
+                        <p>{{ task.description }}</p>
+                        {% if task.datecompleted %}<p><strong>Completed at: </strong>{{ task.datecompleted|date:'j/M/Y - H:i' }}</p>{% endif %}
+                    </a>
+    
+                </li>
+                
+            {% empty %}
+                <div class="flex flex-col items-center">
+                    
+                    <img src="https://assets.stickpng.com/images/5a4613ddd099a2ad03f9c994.png" width="150" height="150">
+                    <h1 class="text-lg font-semibold">There's Nothing here</h1>
+                    <p>Start creating your first task</p>
+                    <a class="bg-orange-400 p-3 mt-3 rounded-full" href="{% url 'create_task' %}">Create task</a>
+                    
+                </div>
+            {% endfor %}
+
+        </ul>
+    </main>
+    
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <main>
+        <section class="mx-auto w-3/5 mt-10 p-10 bg-gray-800 text-white shadow-xl">
+            
+            <h1 class="text-center text-3xl">Sign up</h1>
+            
+            {% if error %}
+                <p class="text-red-500 mt-3">*{{ error }}</p>
+            {% endif %}
+            
+            <div>
+
+                <form action="/registrarse/" method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="flex flex-col gap-5 mt-3">
+                        <input class="p-2 bg-gray-800 border border-orange-500" type="text" name="username" placeholder="Type your username">
+
+                        <input class="p-2 bg-gray-800 border border-orange-500" type="password" name="password1" placeholder="Type your password">
+
+                        <input class="p-2 bg-gray-800 border border-orange-500" type="password" name="password2" placeholder="Confirm your password">
+
+                        <button class="bg-orange-500 py-3 transition duration-300 hover:bg-amber-500">Sign up</button>
+
+                        <p>Do you already have an account? <a class="text-blue-500" href="{% url 'signin' %}">Sign in</a></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}
