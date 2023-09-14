@@ -16,9 +16,11 @@
     </div>
     <main class="bg-white p-20">
 
+        {% if tasks %}
         <div class="container mx-auto">
             <a class="bg-orange-500 p-2 rounded-full transition duration-300 text-white hover:bg-amber-500" href="{% url 'create_task' %}">Add new task +</a>
         </div>
+        {% endif %}
 
         <ul class="mt-5 container mx-auto">
 
@@ -44,7 +46,7 @@
                     <img src="https://assets.stickpng.com/images/5a4613ddd099a2ad03f9c994.png" width="150" height="150">
                     <h1 class="text-lg font-semibold">There's Nothing here</h1>
                     <p>Start creating your first task</p>
-                    <a class="bg-orange-400 p-3 mt-3 rounded-full" href="{% url 'create_task' %}">Create task</a>
+                    <a class="bg-orange-500 text-white p-2 mt-3 rounded-full transition duration-300 hover:bg-amber-500" href="{% url 'create_task' %}">Create task</a>
                     
                 </div>
             {% endfor %}
