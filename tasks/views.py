@@ -20,7 +20,6 @@ def signup(request):
     
     if request.method == 'GET':
         return render(request, 'signup.html', {
-            'form': UserCreationForm
         })
     else:
         if request.POST['password1'] == request.POST['password2']:
@@ -33,20 +32,17 @@ def signup(request):
             
             except IntegrityError:
                 return render(request, 'signup.html', {
-                    'form': UserCreationForm,
                     'error': 'Username already exists'
                 })
         
         return render(request, 'signup.html', {
-            'form': UserCreationForm,
             'error': 'Password do not match'
         })
-        
+       
 def signin(request):
     if request.method == 'GET':
-        return render(request, 'signin.html', {
-            'form': AuthenticationForm
-        })
+        return render(request, 'signin.html')
+    
     else:
         user = authenticate(request, username=request.POST['username'],
                      password=request.POST['password'])
@@ -54,13 +50,12 @@ def signin(request):
         if user is None:
             
             return render(request, 'signin.html', {
-                'form': AuthenticationForm,
                 'error': 'Username or password is incorrect'
             })
         else:
             login(request, user)
             return redirect('tasks')
-        
+
 @login_required        
 def signout(request):
     logout(request)

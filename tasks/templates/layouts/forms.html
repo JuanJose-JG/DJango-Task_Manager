@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- TailWind -->
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+
+
+    <!-- CSS -->
+    {% block css %}
+        
+    {% endblock %}
+
+    <title>Tasks Manager</title>
+</head>
+
+    <body class="bg-fixed" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)), url('/static/img/background.jpg');">
+
+    {% block content %}
+        
+    {% endblock %}>
+    
+
+</body>
+</html>

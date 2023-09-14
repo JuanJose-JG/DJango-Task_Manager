@@ -4,13 +4,13 @@
     width: 50px;
     height: 25px;
     position: relative;
-    border: 2px solid #ff2e1f;
+    border: 2px solid #DC2626;
     border-radius: 100px;
     background-color: rgba(169, 169, 169, 0);
 }
 
 #switch-button:checked~ .switch-button_label{
-    border: 2px solid #41cf00;
+    border: 2px solid #84CC16;
 }
 
 .switch-button_label::after{
@@ -18,7 +18,7 @@
     content: '';
     width: 17px;
     height: 17px;
-    background-color: #ff2e1f;
+    background-color: #DC2626;
     border-radius: 100px;
     top: 2px;
     left: 2px;
@@ -26,7 +26,7 @@
 }
 
 #switch-button:checked~ .switch-button_label::after{
-    background-color: #41cf00;
+    background-color: #84CC16;
     left: 27px;
 }
 

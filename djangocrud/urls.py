@@ -31,7 +31,7 @@ urlpatterns = [
     path('tareas/<int:task_id>/complete', views.complete_task, name='complete_task'),
     path('tareas/<int:task_id>/delete', views.delete_task, name='delete_task'),
     path('cerrar-sesion/', views.signout, name='signout'),
-    path('ingresar/', views.signin, name='signin'),
+    path('ingresar/', views.signin, name='signin')
 ]
 
 handler404 = views.Error404View.as_view()

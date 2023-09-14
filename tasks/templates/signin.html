@@ -1,11 +1,16 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/forms.html' %}
+{%load static%}
 
 {% block content %}
 
-    <main>
-        <section class="mx-auto mt-10 w-3/5 p-10 bg-gray-800 text-white shadow-xl self-center">
+    <main class="p-12 flex items-center h-screen">
+        <section class="w-3/4 mx-auto p-10 bg-gray-800 text-white shadow-xl self-center">
 
-            <h1 class="text-center text-3xl">Sign in</h1>
+            <div class="grid grid-cols-3 items-center">
+                <a href="{% url 'home' %}"><img class="border-2 rounded-full w-24" src="{% static 'img/logo.png' %}"></a>
+    
+                <h1 class="text-center text-6xl">Sign In</h1>
+            </div>
             
             {% if error %}
                 <p class="text-red-500 mt-3">*{{ error }}</p>
@@ -30,8 +35,4 @@
         </section>
     </main>
 
-{% endblock %}
-
-{% block footer %}
-    
 {% endblock %}

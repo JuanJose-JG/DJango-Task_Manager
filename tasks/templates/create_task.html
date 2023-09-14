@@ -1,4 +1,4 @@
-{% extends 'layouts/base.html' %}
+{% extends 'layouts/forms.html' %}
 {% load static %}
 
 {% block css %}
@@ -6,10 +6,14 @@
 {% endblock %}
 
 {% block content %}
-    <main>
-        <section class="mx-auto mt-10 w-4/5 p-10 bg-gray-800 text-white shadow-xl self-center">
-
-            <h1 class="text-center text-3xl">Create task</h1>
+    <main class="p-12">
+        <section class="p-10 w-3/4 mx-auto bg-gray-800 text-white">
+            
+            <div class="grid grid-cols-3 items-center">
+                <a href="{% url 'tasks' %}"><img class="border-2 rounded-full w-24" src="{% static 'img/logo.png' %}"></a>
+    
+                <h1 class="text-center text-6xl">Create Task</h1>
+            </div>
             
             <div>
 
@@ -39,8 +43,4 @@
         </section>
     </main>
 
-{% endblock %}
-
-{% block footer %}
-    
 {% endblock %}
