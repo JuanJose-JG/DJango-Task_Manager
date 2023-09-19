@@ -8,7 +8,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 
     <!-- TailWind -->
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/output.css' %}"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- CSS -->
     {% block css %}
@@ -19,34 +20,50 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <nav class="bg-gray-800 text-white grid grid-cols-3 items-center z-50">
+    <nav class="bg-gray-800 text-white grid grid-cols-4 items-center z-50">
         <div class="flex items-center gap-3 m-4">
             <img width="48" src="{% static 'img/logo.png' %}" alt="logo">
             <h1 class="text-2xl">Task manager</h1>
         </div>
 
-        <div class="col-span-2 px-5 lg:hidden m-4">
+        <div class="col-span-3 px-5 lg:hidden m-4">
             <button class="float-right" id="toggle">
                 <img src="{% static 'img/bars.svg' %}" id="icon-bars">
                 <img class="hidden" src="{% static 'img/xmark.svg' %}" id="icon-xmark">
             </button>
         </div>
 
-        <div class="col-span-2 max-lg:hidden">
+        <div class="col-span-2 mx-auto max-lg:hidden">
     
-            <ul class="bg-gray-800 flex gap-5 w-full">
-
+            <ul class="flex gap-5">
+                
                 {% include 'layouts/menu.html' %}
- 
+                
             </ul>
         </div>
+
+        {% if user.is_authenticated %}
+
+            <form class="relative text-black max-lg:hidden" method="GET" action="{% url 'tasks' %}">
+                {% include 'layouts/search.html' %}
+            </form>
+
+        {% endif %}
     </nav>
     
     <div class="relative">
 
-        <ul class="bg-gray-800 bg-opacity-75 text-white w-full absolute -top-72 flex flex-col gap-5 p-8 z-40 transition-all duration-500 ease-out" id="toggle-menu">
+        <ul class="lg:hidden bg-gray-800 bg-opacity-75 text-white w-full absolute -top-96 flex flex-col gap-5 p-8 z-40 transition-all duration-500 ease-out" id="toggle-menu">
 
             {% include 'layouts/menu.html' %}
+
+            {% if user.is_authenticated %}
+
+                <form class="relative text-black" method="GET" action="{% url 'tasks' %}">
+                    {% include 'layouts/search.html' %}
+                </form>
+
+            {% endif %}
 
         </ul>
     </div>
@@ -122,14 +139,14 @@
                 </div>
             </div>
 
-            <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium py-7 px-5 flex gap-5 justify-center overflow-x-auto">
+            <div class="bg-gradient-to-r from-orange-500 to-amber-500 text-white font-medium py-7 px-5 overflow-x-auto flex justify-center gap-5">
 
-                    <a href="#">HOME</a>
-                    <a href="#">TEMPLATES</a>
-                    <a href="#">ABOUT</a>
-                    <a href="#">BLOG</a>
-                    <a href="#">INSTRUCTIONS</a>
-                    <a href="#">CONTACT</a>
+                <a href="#">HOME</a>
+                <a href="#">TEMPLATES</a>
+                <a href="#">ABOUT</a>
+                <a href="#">BLOG</a>
+                <a href="#">INSTRUCTIONS</a>
+                <a href="#">CONTACT</a>
 
             </div>
         </footer>

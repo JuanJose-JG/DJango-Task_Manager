@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
@@ -8,6 +7,7 @@ from .models import Task
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
+from django.db.models import Q
 
 # Create your views here.
 def home(request):
@@ -19,8 +19,7 @@ def about(request):
 def signup(request):
     
     if request.method == 'GET':
-        return render(request, 'signup.html', {
-        })
+        return render(request, 'signup.html')
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:     
@@ -60,22 +59,18 @@ def signin(request):
 def signout(request):
     logout(request)
     return redirect('home')
-        
 
 @login_required 
 def tasks(request):
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=True).order_by('-created')
-    
-    return render(request, 'tasks.html', {
-        'tasks': tasks
-    })
+    query = request.GET.get('q', '').strip()
+    tasks = Task.objects.filter(user=request.user).order_by('-created')
 
-@login_required     
-def tasks_completed(request):
-    tasks = Task.objects.filter(user=request.user, datecompleted__isnull=False).order_by('-datecompleted')
-    
+    if query:
+        tasks = tasks.filter(Q(title__icontains=query) | Q(description__icontains=query))
+
     return render(request, 'tasks.html', {
-        'tasks': tasks
+        'tasks': tasks,
+        'query': query
     })
 
 @login_required 

@@ -25,7 +25,6 @@ urlpatterns = [
     path('nosotros/', views.about, name='about'),
     path('registrarse/', views.signup, name='signup'),
     path('tareas/', views.tasks, name='tasks'),
-    path('tareas-terminadas/', views.tasks_completed, name='tasks_completed'),
     path('tareas/crear/', views.create_task, name='create_task'),
     path('tareas/<int:task_id>', views.task_detail, name='task_detail'),
     path('tareas/<int:task_id>/complete', views.complete_task, name='complete_task'),

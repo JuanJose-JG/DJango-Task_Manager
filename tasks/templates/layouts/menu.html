@@ -1,3 +1,4 @@
+{% load static %}
 <li class="transition duration-300 hover:text-orange-500 hover:underline underline-offset-8 {% if request.path == '/' %} text-orange-500 {% endif %}" >                
     <a href="{% url 'home' %}">Home</a>
 </li>
@@ -10,10 +11,6 @@
 
     <li class="transition duration-300 hover:text-orange-500 hover:underline underline-offset-8 {% if request.path == '/tareas/' %} text-orange-500 {% endif %}">                
         <a href="{% url 'tasks' %}">Tasks</a>
-    </li>
-
-    <li class="transition duration-300 hover:text-orange-500 hover:underline underline-offset-8 {% if request.path == '/tareas-terminadas/' %} text-orange-500 {% endif %}">                
-        <a href="{% url 'tasks_completed' %}">Completed tasks</a>
     </li>
 
     <li>                

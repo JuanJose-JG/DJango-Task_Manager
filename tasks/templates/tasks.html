@@ -6,9 +6,14 @@
     <main class="bg-white p-20">
 
         {% if tasks %}
-        <div class="container mx-auto">
-            <a class="bg-orange-500 p-2 rounded-full transition duration-300 text-white hover:bg-amber-500" href="{% url 'create_task' %}">Add new task +</a>
-        </div>
+            {% if query %}
+                <h2 class="text-3xl mb-10">Results for: {{query}}</h2>
+            {% endif %}
+
+            <div class="container mx-auto">
+                <a class="bg-orange-500 p-2 rounded-full transition duration-300 text-white hover:bg-amber-500" href="{% url 'create_task' %}">Add new task +</a>
+            </div>
+
         {% endif %}
 
         <ul class="mt-5 container mx-auto">
@@ -19,7 +24,7 @@
 
                     <a href="{% url 'task_detail' task.id %}">
                         <div class="flex justify-between mb-3">
-                            {% if task.important %} <h1 class="text-2xl text-yellow-500 font-bold">{{ task.title }}</h1> {% else %} <h1 class="text-2xl font-bold">{{ task.title }}</h1> {% endif %}
+                            <h1 class="{% if task.datecompleted %} text-green-500 {% elif task.important %} text-yellow-400 {% endif %}text-2xl font-bold">{{task.title}}</h1>
                             
                             <p>{{ task.user.username }}</p>
                         </div>
@@ -30,19 +35,30 @@
                 </li>
                 
             {% empty %}
-                <div class="flex flex-col items-center">
+                {% if query %}
+                    <h2 class="text-3xl">No results for: {{query}}</h2>
+                {% else %}
                     
-                    <img src="https://assets.stickpng.com/images/5a4613ddd099a2ad03f9c994.png" width="150" height="150">
-                    <h1 class="text-lg font-semibold">There's Nothing here</h1>
-                    <p>Start creating your first task</p>
-                    <a class="bg-orange-500 text-white p-2 mt-3 rounded-full transition duration-300 hover:bg-amber-500" href="{% url 'create_task' %}">Create task</a>
-                    
-                </div>
+                    <div class="flex flex-col items-center">
+                        
+                        <img src="https://assets.stickpng.com/images/5a4613ddd099a2ad03f9c994.png" width="150" height="150">
+                        <h1 class="text-lg font-semibold">There's Nothing here</h1>
+                        <p>Start creating your first task</p>
+                        <a class="bg-orange-500 text-white p-2 mt-3 rounded-full transition duration-300 hover:bg-amber-500" href="{% url 'create_task' %}">Create task</a>
+                        
+                    </div>
+                {% endif %}
             {% endfor %}
 
         </ul>
     </main>
+
+    <script class="{% static 'js/search.js' %}"></script>
     
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/search.js' %}"></script>
 {% endblock %}
 
 {% block footer %}{% endblock %}
