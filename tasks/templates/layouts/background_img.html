@@ -1,6 +1,6 @@
 {% load static %}
-<div class="w-100 h-80 relative">
-    <img class="fixed -z-50 top-0 object-cover brightness-50 object-center w-full h-full" src="{% static 'img/background.jpg' %}">
+<div class="relative -z-50 h-80">
+    <img class="fixed top-0 object-cover brightness-50 object-center w-full h-full" src="{% static 'img/background.jpg' %}">
 
     <div class="absolute start-20 flex items-center text-white font-black text-5xl h-full">
         {% if request.path == '/' %}

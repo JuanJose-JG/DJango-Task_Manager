@@ -6,7 +6,7 @@ menuToggle.addEventListener('click', function() {
     const buttonBars = document.getElementById('icon-bars');
     const buttonTimes = document.getElementById('icon-xmark');
 
-    menu.classList.toggle('top-0');
+    menu.classList.toggle('left-0');
 
     buttonBars.classList.toggle('hidden');
     buttonTimes.classList.toggle('hidden');

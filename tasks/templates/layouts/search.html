@@ -5,17 +5,26 @@
     }
 </style>
 
-<div class="flex">
-    <input class="rounded-l-full p-1" type="search" name="q" value="{{ query }}" placeholder="Search in tasks..." id="searchBar">
-    <button class="bg-orange-500 px-3 rounded-r-full"><img src="{% static 'img/search.svg' %}"></button>
-</div>
 
-<ul class="hidden border shadow-xl absolute top-9 bg-white rounded-lg py-2 w-52" id="searchList">
+<form class="relative" action="{% url 'tasks' %}" method="GET">
 
-    {% for search in search %}
-        <a class="tasks" href="{% url 'task_detail' search.id %}"><li class="px-2 hover:bg-blue-200">{{ search.title }}<p style="display: none;">{{ search.description }}</p></li></a>
-    {% endfor %}
-    <p class="hide px-2" id="noResults">No Results.</p>
-</ul>
+    <div class="flex">
+        <input class="text-black rounded-l-lg p-1 w-52" type="search" name="q" value="{{ query }}" placeholder="Search in tasks..." id="searchBar">
+        <button class="bg-orange-500 px-3 rounded-r-lg"><img src="{% static 'img/search.svg' %}"></button>
+    </div>
+
+    <ul class="hidden absolute top-9 border shadow-xl bg-white rounded-lg py-2 w-52" id="searchList">
+
+        {% for task in search %}
+            <a href="{% url 'task_detail' task.id %}" class="tasks">
+                <li class="text-black px-2 hover:bg-blue-200">
+                    {{ task.title }}
+                    <p class="hide">{{ task.description }}</p>
+                </li>
+            </a>
+        {% endfor %}
+        <p class="hide px-2 text-black" id="noResults">No Results.</p>
+    </ul>
+</form>
 
 <script src="{% static 'js/search.js' %}"></script>
