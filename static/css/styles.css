@@ -9,10 +9,6 @@
     background-color: rgba(169, 169, 169, 0);
 }
 
-#switch-button:checked~ .switch-button_label{
-    border: 2px solid #84CC16;
-}
-
 .switch-button_label::after{
     position: absolute;
     content: '';
@@ -25,11 +21,25 @@
     transition: 0.3s
 }
 
+#switch-button:checked~ .switch-button_label{
+    border: 2px solid #84CC16;
+}
 #switch-button:checked~ .switch-button_label::after{
     background-color: #84CC16;
     left: 27px;
 }
 
+#switch-button2:checked~ .switch-button_label{
+    border: 2px solid #84CC16;
+}
+#switch-button2:checked~ .switch-button_label::after{
+    background-color: #84CC16;
+    left: 27px;
+}
+
 #switch-button{
+    display: none;
+}
+#switch-button2{
     display: none;
 }

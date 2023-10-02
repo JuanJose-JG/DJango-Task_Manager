@@ -76,9 +76,7 @@ def tasks(request):
 @login_required 
 def create_task(request):
     if request.method == 'GET':
-        return render(request, 'create_task.html', {
-            'form': CreateTaskForm
-        })
+        return render(request, 'create_task.html')
         
     else:
         try:
@@ -98,33 +96,30 @@ def create_task(request):
 def task_detail(request, task_id):
     if request.method == 'GET':   
         task = get_object_or_404(Task, id=task_id, user=request.user)
-        form = CreateTaskForm(instance=task)
         return render(request, 'task_detail.html', {
-            'task': task,
-            'form': form
+            'task': task
         })
         
     else:
         try:
             task = get_object_or_404(Task, id=task_id, user=request.user)
             form = CreateTaskForm(request.POST, instance=task)
-            form.save()
+            update_task = form.save(commit=False)
+            completed = request.POST.get('completed', False)
+
+            if completed and task.datecompleted is None:
+                update_task.datecompleted = timezone.now()
+            elif not completed and task.datecompleted is not None:
+                update_task.datecompleted = None
+
+            update_task.save()
             return redirect('tasks')
         
         except ValueError:
             return render(request, 'task_detail.html', {
                 'task': task,
-                'form': form,
                 'error': 'Error updating task'
             })
-
-@login_required             
-def complete_task(request, task_id):
-    task = get_object_or_404(Task, id=task_id, user=request.user)
-    if request.method == 'POST':
-        task.datecompleted = timezone.now()
-        task.save()
-        return redirect('tasks')
 
 @login_required     
 def delete_task(request, task_id):
