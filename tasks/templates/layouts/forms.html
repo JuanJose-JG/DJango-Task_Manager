@@ -7,8 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 
     <!-- TailWind -->
-    <!-- <link rel="stylesheet" href="{% static 'css/output.css' %}"> -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+
     <!-- CSS -->
     {% block css %}
         
@@ -17,7 +17,7 @@
     <title>Tasks Manager</title>
 </head>
 
-    <body class="bg-fixed" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)), url('/static/img/background.jpg'); background-size: cover;">
+    <body style="background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0,0,0,0.5)), url('/static/img/background.jpg'); background-size: cover;">
 
     <main class="h-screen flex items-center p-8">
         <section class="max-w-lg mx-auto bg-gray-800 text-white shadow-md rounded-lg p-6">

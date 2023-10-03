@@ -3,9 +3,9 @@
 
 {% block content %}
 
-    <main class="bg-white p-6">
+    <main class="bg-white p-6 min-h-screen">
         <div class="max-w-6xl mx-auto mb-10">
-            <a class="bg-orange-500 rounded py-2 px-4 text-white hover:bg-amber-500" href="{% url 'create_task' %}">Add new task +</a>
+            <a class="bg-orange-500 rounded py-2 px-4 text-white hover:bg-amber-500 font-semibold" href="{% url 'create_task' %}">Add new task +</a>
         </div>
 
         <div class="max-w-6xl mx-auto bg-stone-50 shadow-lg rounded-lg overflow-hidden">
@@ -37,13 +37,12 @@
                         <h2 class="text-3xl">No results for: {{query}}</h2>
                     {% else %}
                         
-                        <div class="flex flex-col items-center">
+                        <div class="flex flex-col items-center my-7">
                             
                             <img src="https://assets.stickpng.com/images/5a4613ddd099a2ad03f9c994.png" width="150" height="150">
                             <h1 class="text-lg font-semibold">There's Nothing here</h1>
                             <p>Start creating your first task</p>
-                            <a class="bg-orange-500 text-white p-2 mt-3 rounded-full transition duration-300 hover:bg-amber-500" href="{% url 'create_task' %}">Create task</a>
-                            
+                            <a class="bg-orange-500 text-white px-6 py-2 mt-3 rounded hover:bg-amber-500" href="{% url 'create_task' %}">Create task</a>
                         </div>
                     {% endif %}
                 {% endfor %}

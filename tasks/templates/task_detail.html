@@ -43,46 +43,29 @@
                 <label for="switch-button2" class="switch-button_label"></label>
             </div>
 
-            <button class="px-6 py-2 rounded bg-orange-500 hover:bg-amber-500" type="submit">Save</button>
+            <button class="px-6 py-2 rounded bg-orange-500 hover:bg-amber-500 font-semibold" type="submit">Save</button>
+            <p class="inline-block cursor-pointer bg-red-500 hover:bg-red-600 px-6 py-2 rounded mt-3 font-semibold" id="deleteButton">Delete</p>
         </div>
     </form>
 
-    <button class="bg-red-500 hover:bg-red-600 px-6 py-2 rounded mt-3" id="deleteButton">Delete</button>
-
+    
     <div class="hidden absolute w-full start-0 top-0 bottom-0 bg-black opacity-75" id="background">
     </div>
-
     <div class="absolute top-0 start-0 w-full h-screen flex justify-center items-center" id="alert">
         <div class="max-w-xl bg-gray-800 rounded-lg p-10 text-center flex flex-col justify-center">
             <img class="w-1/3 mx-auto mb-5" src="{% static 'img/alert.svg' %}">
             <h1 class="text-neutral-200 text-4xl font-bold mb-3">Are you sure to delete this task?</h1>
             <p class="text-xl mb-5">Will be permanently eliminated</p>
             <div class="flex gap-3 justify-center">
-                <button class="bg-gray-600 py-2 px-6 rounded" id="cancel">Cancel</button>
+                <button class="bg-gray-600 hover:bg-gray-700 py-2 px-6 rounded font-semibold" id="cancel">Cancel</button>
                 <form action="{% url 'delete_task' task.id %}" method="POST">
                     {% csrf_token %}
                     
-                    <button class="bg-red-500 hover:bg-red-600 py-2 px-6 rounded" type="submit">Confirm</button>
+                    <button class="bg-red-500 hover:bg-red-600 py-2 px-6 rounded font-semibold" type="submit">Confirm</button>
                 </form>
             </div>
         </div>
     </div>
     
-    <script>
-        const deleteButton = document.getElementById("deleteButton");
-        const background = document.getElementById("background");
-        const alert = document.getElementById("alert");
-        const cancel = document.getElementById("cancel");
-        alert.classList.add('hidden')
-    
-        deleteButton.addEventListener('click', function() {
-            background.classList.remove('hidden');
-            alert.classList.remove('hidden');
-        });
-
-        cancel.addEventListener('click', function() {
-            background.classList.add('hidden');
-            alert.classList.add('hidden');
-        });
-    </script>
+    <script src="{% static 'js/alert.js' %}"></script>
 {% endblock %}

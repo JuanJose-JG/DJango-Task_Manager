@@ -14,7 +14,7 @@
     </li>
 
     <li>                
-        <a class="px-4 py-1 border-2 border-orange-500 bg-orange-500 rounded hover:bg-amber-500 hover:border-amber-500" href="{% url 'signout' %}">Logout</a>
+        <a class="px-4 py-1 border-2 border-orange-500 bg-orange-500 rounded hover:bg-amber-500 hover:border-amber-500 font-semibold" href="{% url 'signout' %}">Logout</a>
     </li>
 
     <div class="grow">
@@ -26,11 +26,11 @@
 {% else %}
     
     <li>                
-        <a class="px-4 py-1 border-2 border-orange-500 rounded hover:bg-amber-500 hover:border-amber-500" href="{% url 'signup' %}">Sign up</a>
+        <a class="px-4 py-1 border-2 border-orange-500 rounded hover:bg-amber-500 hover:border-amber-500 font-semibold" href="{% url 'signup' %}">Sign up</a>
     </li>
 
     <li>                
-        <a class="px-4 py-1 border-2 border-orange-500 bg-orange-500 rounded hover:bg-amber-500 hover:border-amber-500" href="{% url 'signin' %}">Sign in</a>
+        <a class="px-4 py-1 border-2 border-orange-500 bg-orange-500 rounded hover:bg-amber-500 hover:border-amber-500 font-semibold" href="{% url 'signin' %}">Sign in</a>
     </li>
     
 {% endif %}
