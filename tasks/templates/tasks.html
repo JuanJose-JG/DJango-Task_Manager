@@ -3,48 +3,48 @@
 
 {% block content %}
 
-    <main class="bg-white p-6 min-h-screen">
+    <main class="bg-white p-10 min-h-screen">
         <div class="max-w-6xl mx-auto mb-10">
             <a class="bg-orange-500 rounded py-2 px-4 text-white hover:bg-amber-500 font-semibold" href="{% url 'create_task' %}">Add new task +</a>
-        </div>
-
-        <div class="max-w-6xl mx-auto bg-stone-50 shadow-lg rounded-lg overflow-hidden">
-
             {% if tasks %}
                 {% if query %}
-                    <h2 class="text-3xl mb-10">Results for: {{query}}</h2>
+                    <h2 class="text-3xl mb-10 mt-5">Results for: {{query}}</h2>
                 {% endif %}
             {% endif %}
-    
+        </div>
+        
+        <div class="max-w-6xl mx-auto bg-stone-50 shadow-lg rounded-lg">
+
+
             <ul class="divide-y divide-gray-300">
     
                 {% for task in tasks %}
                 
-                <li class="px-4 py-2">
-                    <a href="{% url 'task_detail' task.id %}">
-                        <div class="flex justify-between mb-3">
-                            <h1 class="{% if task.datecompleted %} text-green-500 {% elif task.important %} text-yellow-400 {% endif %}text-2xl font-bold">{{task.title}}</h1>
-                            
-                            <p>{{ task.user.username }}</p>
-                        </div>
-                        <p>{{ task.description }}</p>
-                        {% if task.datecompleted %}<p><strong>Completed at: </strong>{{ task.datecompleted|date:'j/M/Y - H:i' }}</p>{% endif %}
-                    </a>
-                </li>
-                    
+                    <li class="px-4 py-2">
+                        <a href="{% url 'task_detail' task.id %}">
+                            <div class="flex justify-between mb-3">
+                                <h1 class="{% if task.datecompleted %} text-green-500 {% elif task.important %} text-yellow-400 {% endif %}text-2xl font-bold">{{task.title}}</h1>
+                                
+                                <p>{{ task.user.username }}</p>
+                            </div>
+                            <p>{{ task.description }}</p>
+                            {% if task.datecompleted %}<p><strong>Completed at: </strong>{{ task.datecompleted|date:'j/M/Y - H:i' }}</p>{% endif %}
+                        </a>
+                    </li>
                 {% empty %}
-                    {% if query %}
-                        <h2 class="text-3xl">No results for: {{query}}</h2>
-                    {% else %}
-                        
-                        <div class="flex flex-col items-center my-7">
-                            
-                            <img src="https://assets.stickpng.com/images/5a4613ddd099a2ad03f9c994.png" width="150" height="150">
+                
+                    <div class="flex flex-col items-center my-7 p-3">
+
+                        {% if query %}
+                            <h2 class="text-3xl">No results for: {{query}}</h2>
+                        {% else %}
+
+                            <img src="{% static 'img/question.svg' %}" width="150" height="150">
                             <h1 class="text-lg font-semibold">There's Nothing here</h1>
                             <p>Start creating your first task</p>
                             <a class="bg-orange-500 text-white px-6 py-2 mt-3 rounded hover:bg-amber-500" href="{% url 'create_task' %}">Create task</a>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
                 {% endfor %}
     
             </ul>
