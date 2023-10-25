@@ -1,15 +1,16 @@
-const deleteButton = document.getElementById("deleteButton");
-        const background = document.getElementById("background");
-        const alert = document.getElementById("alert");
-        const cancel = document.getElementById("cancel");
-        alert.classList.add('hidden')
-    
-        deleteButton.addEventListener('click', function() {
-            background.classList.remove('hidden');
-            alert.classList.remove('hidden');
-        });
+const deleteButton = document.getElementById("deleteButton"),
+    overlay = document.getElementById("overlay"),
+    modal = document.getElementById("modal"),
+    cancel = document.getElementById("cancel");
 
-        cancel.addEventListener('click', function() {
-            background.classList.add('hidden');
-            alert.classList.add('hidden');
-        });
+deleteButton.addEventListener('click', function() {
+    overlay.classList.remove('invisible');
+    modal.classList.remove('opacity-0')
+    modal.classList.remove('scale-50')
+});
+
+cancel.addEventListener('click', function() {
+    overlay.classList.add('invisible');
+    modal.classList.add('opacity-0');
+    modal.classList.add('scale-50');
+});
