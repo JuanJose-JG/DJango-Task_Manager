@@ -8,7 +8,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 
     <!-- TailWind -->
-    <link rel="stylesheet" href="{% static 'css/output.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/output.css' %}"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- CSS -->
     {% block css %}
@@ -39,7 +40,11 @@
         </div>
 
         <div class="place-self-center mx-4 max-lg:hidden">
-            {% include 'layouts/search.html' %}
+            {% if user.is_authenticated %}
+                {% include 'layouts/search.html' %}
+            {% else %}
+                <span class="invisible">{% include 'layouts/search.html' %}</span>
+            {% endif %}
         </div>
 
     </nav>
@@ -58,7 +63,9 @@
             </button>
         </div>
         {% include 'layouts/menu.html' %}
-        {% include 'layouts/search.html' %} 
+        {% if user.is_authenticated %}   
+            {% include 'layouts/search.html' %} 
+        {% endif %}
     </ul>
 
     {% block background_img %}

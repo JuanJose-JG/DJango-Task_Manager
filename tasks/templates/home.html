@@ -49,29 +49,30 @@
                     <h1 class="text-5xl text-center mb-10">Gallery</h1>
 
                     <div class="flex flex-wrap gap-3 justify-center" id="gallery">
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-1.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-1"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-2.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-2"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-3.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-3"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-4.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-4"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-5.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-5"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-6.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-6"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-7.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-7"></span>
-                        <span class="overflow-hidden"><img src="{% static 'img/gallery-8.jpg' %}" class="w-full h-full object-cover cursor-pointer" id="img-8"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-1.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-2.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-3.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-4.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-5.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-6.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-7.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-8.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
+                        <span class="overflow-hidden"><img src="{% static 'img/gallery-9.jpg' %}" class="w-full h-full object-cover cursor-pointer"></span>
                     </div>
 
                     <div class="invisible fixed top-0 bottom-0 start-0 w-full flex items-center justify-center" id="preview-box">
                         
-                        <div class="bg-white w-3/5 max-lg:w-full p-2 shadow transition-all duration-100 ease-in scale-50" id="image-box">
+                        <div class="bg-white p-2 shadow transition-all duration-100 ease-in scale-50" id="image-box">
 
                             <div class="flex justify-between mx-1 mb-2">
                                 <span class="flex gap-1">Image <p class="font-semibold" id="current-img"></p> of <p class="font-semibold" id="total-img"></p></span>
                                 <img class="cursor-pointer" src="{% static 'img/x.svg' %}" id="close">
                             </div>
 
-                            <div class="relative flex">
-                                <img class="w-10 h-10 p-1 opacity-50 hover:opacity-100 bg-neutral-400 absolute start-2 place-self-center rounded-full" src="{% static 'img/angle-left.svg' %}" id="prev-btn">
-                                <img class="" id="selected-img">
-                                <img class="w-10 h-10 p-1 opacity-50 hover:opacity-100 bg-neutral-400 absolute end-2 place-self-center rounded-full" src="{% static 'img/angle-right.svg' %}" id="next-btn">
+                            <div class="relative flex justify-center">
+                                <img class="w-10 h-10 p-1 opacity-50 hover:opacity-100 bg-neutral-400 absolute start-2 place-self-center rounded-full cursor-pointer" src="{% static 'img/angle-left.svg' %}" id="prev-btn">
+                                <img class="max-w-xl" id="selected-img">
+                                <img class="w-10 h-10 p-1 opacity-50 hover:opacity-100 bg-neutral-400 absolute end-2 place-self-center rounded-full cursor-pointer" src="{% static 'img/angle-right.svg' %}" id="next-btn">
                             </div>
                         </div>
                     </div>
