@@ -1,6 +1,5 @@
 const gallery = document.querySelectorAll('#gallery img'),
     previewBox = document.getElementById('preview-box'),
-    imageBox = document.getElementById('image-box'),
     selectedImg = document.getElementById('selected-img'),
     currentImg = document.getElementById('current-img'),
     totalImg = document.getElementById('total-img'),
@@ -15,7 +14,6 @@ window.onload = ()=>{
 
         gallery[i].onclick = ()=>{
             clickImgIndex = newIndex;
-            console.log(i);
             
             function preview(){
                 currentImg.textContent = newIndex+1;
@@ -27,30 +25,30 @@ window.onload = ()=>{
                 nextBtn = document.getElementById('next-btn');
 
             if(newIndex == 0){
-                prevBtn.classList.add("hidden");
+                prevBtn.classList.add("invisible");
             } else {
-                prevBtn.classList.remove("hidden");
+                prevBtn.classList.remove("invisible");
             }
 
             if(newIndex >= gallery.length-1){
-                nextBtn.classList.add("hidden");
+                nextBtn.classList.add("invisible");
             } else {
-                nextBtn.classList.remove("hidden");
+                nextBtn.classList.remove("invisible");
             }
             if(i == 0){
-            prevBtn.classList.add("hidden");
+                prevBtn.classList.add("invisible");
             } else {
-                prevBtn.classList.remove("hidden");
+                prevBtn.classList.remove("invisible");
             }
 
             prevBtn.onclick = ()=>{
                 newIndex--;
                 
                 if(newIndex == 0){
-                    prevBtn.classList.add("hidden");
+                    prevBtn.classList.add("invisible");
                     preview();
                 } else{
-                    nextBtn.classList.remove("hidden");
+                    nextBtn.classList.remove("invisible");
                     preview();
                 }
             }
@@ -59,10 +57,10 @@ window.onload = ()=>{
                 newIndex++;
                 
                 if(newIndex >= gallery.length-1){
-                    nextBtn.classList.add("hidden");
+                    nextBtn.classList.add("invisible");
                     preview();
                 } else{
-                    prevBtn.classList.remove("hidden");
+                    prevBtn.classList.remove("invisible");
                     preview();
                 }
             }
@@ -70,12 +68,10 @@ window.onload = ()=>{
             preview();
 
             previewBox.classList.remove("invisible");
-            imageBox.classList.remove("scale-50");
 
             closeIcon.onclick = ()=>{
                 newIndex = clickImgIndex;
                 previewBox.classList.add("invisible");
-                imageBox.classList.add("scale-50");
             }
         }
     }
