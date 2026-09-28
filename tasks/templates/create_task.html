@@ -2,43 +2,45 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% endblock %}
 
 {% block content %}
-            
-    <div class="grid grid-cols-3 gap-2 items-center">
-        <a href="{% url 'tasks' %}"><img class="w-2/4" src="{% static 'img/logo.png' %}"></a>
 
-        <h1 class="col-span-2 text-3xl font-semibold">Create Task</h1>
-    </div>
+<div class="grid grid-cols-3 gap-2 items-center">
+    <a href="{% url 'tasks' %}"><img class="w-2/4" src="{% static 'img/logo.png' %}"></a>
 
-    <form action="/tareas/crear/" method="POST">
-        {% csrf_token %}
-        
-        {% if error %}
-            <p class="text-red-500 mt-3">*{{ error }}</p>
-        {% endif %}
+    <h1 class="col-span-2 text-3xl font-semibold">Create Task</h1>
+</div>
 
-        <div class="mt-3">
+<form action="/tasks/create/" method="POST">
+    {% csrf_token %}
 
-            <div class="mb-3">
-                <label>Title</label>
-                <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="text" name="title" placeholder="Type a title">
-            </div>
+    {% if error %}
+    <p class="text-red-500 mt-3">*{{ error }}</p>
+    {% endif %}
 
-            <div class="mb-3">
-                <label>Description</label>
-                <textarea class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" name="description" rows="5" placeholder="Type a description"></textarea>
-            </div>
+    <div class="mt-3">
 
-            <div class="flex gap-3 mb-8">
-                <p>Important</p>
-                <input type="checkbox" name="important" id="switch-button" {% if task.important %} checked {% endif %}>
-                <label for="switch-button" class="switch-button_label"></label>
-            </div>
-
-            <button class="px-6 py-2 rounded bg-orange-500 hover:bg-amber-500" type="submit">Save</button>
+        <div class="mb-3">
+            <label>Title</label>
+            <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="text"
+                name="title" placeholder="Type a title">
         </div>
-    </form>
+
+        <div class="mb-3">
+            <label>Description</label>
+            <textarea class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded"
+                name="description" rows="5" placeholder="Type a description"></textarea>
+        </div>
+
+        <div class="flex gap-3 mb-8">
+            <p>Important</p>
+            <input type="checkbox" name="important" id="switch-button" {% if task.important %} checked {% endif %}>
+            <label for="switch-button" class="switch-button_label"></label>
+        </div>
+
+        <button class="px-6 py-2 rounded bg-orange-500 hover:bg-amber-500" type="submit">Save</button>
+    </div>
+</form>
 {% endblock %}

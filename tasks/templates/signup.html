@@ -3,38 +3,41 @@
 
 {% block content %}
 
-            <div class="grid grid-cols-3 items-center">
-                <a href="{% url 'home' %}"><img class="w-2/4" src="{% static 'img/logo.png' %}"></a>
-    
-                <h1 class="col-span-2 text-3xl font-semibold">Sign Up</h1>
-            </div>
-            
-            {% if error %}
-                <p class="text-red-500 mt-3">*{{ error }}</p>
-            {% endif %}
-            
-            <form action="/registrarse/" method="POST">
-                {% csrf_token %}
-                
-                <div class="mt-3">
-                    <div class="mb-3">
-                        <label>Username</label>
-                        <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="text" name="username" placeholder="Type your username">
-                    </div>
+<div class="grid grid-cols-3 items-center">
+    <a href="{% url 'home' %}"><img class="w-2/4" src="{% static 'img/logo.png' %}"></a>
 
-                    <div class="mb-3">
-                        <label>Password</label>
-                        <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="password" name="password1" placeholder="Type your password">
-                    </div>
+    <h1 class="col-span-2 text-3xl font-semibold">Sign Up</h1>
+</div>
 
-                    <div class="mb-8">
-                        <label>Confirm</label>
-                        <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="password" name="password2" placeholder="Confirm your password">
-                    </div>
+{% if error %}
+<p class="text-red-500 mt-3">*{{ error }}</p>
+{% endif %}
 
-                    <button class="px-6 py-2 rounded bg-orange-500 hover:bg-amber-500 mb-3 font-semibold">Submit</button>
+<form action="/signup/" method="POST">
+    {% csrf_token %}
 
-                    <p>Do you already have an account? <a class="text-blue-500" href="{% url 'signin' %}">Sign in</a></p>
-                </div>
-            </form>
+    <div class="mt-3">
+        <div class="mb-3">
+            <label>Username</label>
+            <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="text"
+                name="username" placeholder="Type your username">
+        </div>
+
+        <div class="mb-3">
+            <label>Password</label>
+            <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="password"
+                name="password1" placeholder="Type your password">
+        </div>
+
+        <div class="mb-8">
+            <label>Confirm</label>
+            <input class="w-full p-2 bg-gray-800 border border-orange-500 focus:outline-none rounded" type="password"
+                name="password2" placeholder="Confirm your password">
+        </div>
+
+        <button class="px-6 py-2 rounded bg-orange-500 hover:bg-amber-500 mb-3 font-semibold">Submit</button>
+
+        <p>Do you already have an account? <a class="text-blue-500" href="{% url 'signin' %}">Sign in</a></p>
+    </div>
+</form>
 {% endblock %}

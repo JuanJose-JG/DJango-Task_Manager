@@ -24,14 +24,14 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('nosotros/', views.about, name='about'),
-    path('registrarse/', views.signup, name='signup'),
-    path('tareas/', views.tasks, name='tasks'),
-    path('tareas/crear/', views.create_task, name='create_task'),
-    path('tareas/<int:task_id>', views.task_detail, name='task_detail'),
-    path('tareas/<int:task_id>/delete', views.delete_task, name='delete_task'),
-    path('cerrar-sesion/', views.signout, name='signout'),
-    path('ingresar/', views.signin, name='signin'),
+    path('about/', views.about, name='about'),
+    path('signup/', views.signup, name='signup'),
+    path('tasks/', views.tasks, name='tasks'),
+    path('tasks/create/', views.create_task, name='create_task'),
+    path('tasks/<int:task_id>', views.task_detail, name='task_detail'),
+    path('tasks/<int:task_id>/delete', views.delete_task, name='delete_task'),
+    path('signout/', views.signout, name='signout'),
+    path('login/', views.signin, name='signin'),
 ]
 
 handler404 = views.Error404View.as_view()

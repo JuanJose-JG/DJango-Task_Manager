@@ -21,6 +21,10 @@ def signup(request):
     if request.method == 'GET':
         return render(request, 'signup.html')
     else:
+        if not request.POST['username'] or not request.POST['password1'] or not request.POST['password2']:
+            return render(request, 'signup.html', {
+                'error': 'All fields are required'
+            })
         if request.POST['password1'] == request.POST['password2']:
             try:     
                 user = User.objects.create_user(username=request.POST['username'],
